@@ -1,0 +1,96 @@
+/* demo.wxss: staggered slide-in animation for text and buttons */
+
+.stage {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: #000000;
+  overflow: hidden;
+}
+
+/* ===== Left slide-in (text group) ===== */
+.slide-left {
+  position: absolute;
+  left: 6%;
+  bottom: 16%;
+  max-width: 46%;
+  transform: translateX(-100%) scale(0.98);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+  will-change: transform, opacity;
+}
+
+.slide-left.active {
+  transform: translateX(0) scale(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.title {
+  display: block;
+  color: #ffffff;
+  font-size: 64rpx;
+  font-weight: 900;
+  letter-spacing: 2rpx;
+}
+
+.sub {
+  display: block;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 28rpx;
+  letter-spacing: 2rpx;
+  margin-top: 12rpx;
+}
+
+/* ===== Right slide-in (logo / name / button, staggered 0.25s) ===== */
+.slide-right {
+  position: absolute;
+  right: 6%;
+  top: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  transform: translateX(100%) scale(0.98);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s;
+  will-change: transform, opacity;
+}
+
+.slide-right.active {
+  transform: translateX(0) scale(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.logo {
+  width: 160rpx;
+  height: auto;
+  margin-bottom: 20rpx;
+}
+
+.name {
+  color: #ffffff;
+  font-size: 40rpx;
+  font-weight: 700;
+  letter-spacing: 4rpx;
+  margin-bottom: 36rpx;
+}
+
+/* Pill button: transparent background + thin border, stripped defaults */
+.btn {
+  margin: 0;
+  padding: 20rpx 48rpx;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 999rpx;
+  color: #ffffff;
+  font-size: 28rpx;
+  letter-spacing: 4rpx;
+  line-height: 1.4;
+}
+
+.btn::after {
+  border: none;
+}

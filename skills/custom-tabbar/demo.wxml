@@ -1,0 +1,32 @@
+<!-- demo.wxml: permanent floating pill tabbar with centered raised logo (Variants B + D) -->
+<view class="page">
+  <view class="content">PAGE CONTENT</view>
+</view>
+
+<!-- Spacer: keeps page bottom clear of the fixed bar -->
+<view class="tabbar-spacer"></view>
+
+<!-- Floating pill bar (glass, always visible) -->
+<view class="tabbar-pill">
+  <view class="tab-item {{currentTab === 0 ? 'active' : ''}}" data-index="0" bindtap="onTabTap">
+    <text class="tab-text">HOME</text>
+  </view>
+  <view class="tab-item {{currentTab === 1 ? 'active' : ''}}" data-index="1" bindtap="onTabTap">
+    <text class="tab-text">MAP</text>
+  </view>
+
+  <!-- Gap reserved for the raised logo -->
+  <view class="tab-gap"></view>
+
+  <view class="tab-item {{currentTab === 2 ? 'active' : ''}}" data-index="2" bindtap="onTabTap">
+    <text class="tab-text">PARK</text>
+  </view>
+  <view class="tab-item {{currentTab === 3 ? 'active' : ''}}" data-index="3" bindtap="onTabTap">
+    <text class="tab-text">ME</text>
+  </view>
+</view>
+
+<!-- Centered raised logo (independent sibling, higher z-index) -->
+<view class="tab-logo" bindtap="onLogoTap">
+  <image class="logo-img" src="/assets/logo.svg" mode="aspectFit" />
+</view>

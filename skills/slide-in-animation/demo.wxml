@@ -1,0 +1,15 @@
+<!-- demo.wxml: staggered slide-in animation (left text group + right logo/button group) -->
+<view class="stage">
+  <!-- Left group: text slides in from the left -->
+  <view class="slide-left {{isActive ? 'active' : ''}}">
+    <text class="title">HEADLINE</text>
+    <text class="sub">A SUBTITLE LINE</text>
+  </view>
+
+  <!-- Right group: logo + name + button slide in from the right (staggered) -->
+  <view class="slide-right {{isActive ? 'active' : ''}}">
+    <image class="logo" src="/assets/logo.png" mode="widthFix" />
+    <text class="name">PRODUCT NAME</text>
+    <button class="btn" hover-class="none" bindtap="onTap">ORDER</button>
+  </view>
+</view>

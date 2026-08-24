@@ -1,0 +1,51 @@
+<!-- demo.wxml: vertical swiper homepage with nested horizontal scroll-view snapping -->
+<swiper
+  class="full-swiper"
+  vertical="true"
+  circular="false"
+  duration="400"
+  disable-touch="{{subIndex === 1}}"
+  bindanimationfinish="onAnimationFinish"
+>
+  <!-- Screen 1: plain full-screen page -->
+  <swiper-item>
+    <view class="page">
+      <view class="page-title">PAGE 1</view>
+      <view class="page-tip">Swipe up for the next page</view>
+    </view>
+  </swiper-item>
+
+  <!-- Screen 2: nested horizontal scroll-view with two panels -->
+  <swiper-item>
+    <scroll-view
+      class="h-scroll"
+      scroll-x
+      enable-flex
+      scroll-into-view="{{panelId}}"
+      scroll-with-animation
+      bindscroll="onScroll"
+      bindscrollend="onScrollEnd"
+    >
+      <view class="h-track">
+        <!-- Panel A: no vertical scroll; vertical gesture bubbles to the outer swiper -->
+        <view class="h-panel" id="panel-a">
+          <view class="page">
+            <view class="page-title">SUB A</view>
+            <view class="page-tip">Swipe left for SUB B</view>
+          </view>
+        </view>
+
+        <!-- Panel B: vertical scroll; stops at bottom (outer swiper touch disabled) -->
+        <view class="h-panel" id="panel-b">
+          <view class="page">
+            <view class="page-title">SUB B</view>
+            <scroll-view class="v-scroll" scroll-y="true" bounces="{{false}}">
+              <view class="item" wx:for="{{list}}" wx:key="*this">ITEM {{item}}</view>
+              <view class="no-more">— No more —</view>
+            </scroll-view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+</swiper>
